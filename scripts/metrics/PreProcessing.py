@@ -128,6 +128,19 @@ def dropDupes(dataframe, input1, input2):
 
 #IQR Outliers are identified and removed
 def outRemove(df, dataFile, input1):
+    """
+    Identifies and removes outliers from a DataFrame based on IQR threshold.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame with IAT column
+        dataFile (str): Name of the data file
+        input1 (str): First attribute for deduplication
+
+    Returns:
+        dfInliers (pd.DataFrame): DataFrame with outliers removed
+        lower (float): Lower bound of the IQR range
+        upper (float): Upper bound of the IQR range
+    """
     dfInliers = df.copy(deep = True)
     dataName = dataFile
     
@@ -147,6 +160,16 @@ def outRemove(df, dataFile, input1):
 
     
 def dataStats(df):
+    """
+    Compute summary statistics for IAT column in DataFrame.
+
+    Args:
+        df: DataFrame with IAT column
+
+    Returns:
+        tuple of 7 integers: mean, median, mode, standard deviation, variance, skewness, kurtosis
+    """
+    
     skewStat = int(df['IAT'].skew())
     varianceStat = int(df['IAT'].var())
     meanStat = int(df['IAT'].mean())
@@ -159,6 +182,21 @@ def dataStats(df):
 
 #Data visualizations
 def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeScore, addnlScore):
+
+    """
+    Creates a radar chart to visualize the metric scores.
+
+    Args:
+        regularityScore (float): Regularity of InterArrival Time metric score
+        outliersScore (float): Outliers of Inter-Arrival Time metric score
+        dupeScore (float): Absence of Duplicates metric score
+        formatScore (float): Attribute Format Adherence metric score
+        completeScore (float): Mandatory Attribute Adherence metric score
+        addnlScore (float): Unknown Attribute Absence metric score
+
+    Returns:
+        None
+    """
 
     custom_style = Style(
       background='transparent',
@@ -181,6 +219,16 @@ def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeS
 
 
 def bars(score, name):
+    """
+    Creates a horizontal stacked bar chart to visualize a single metric score.
+
+    Args:
+        score (float): The metric score to visualize
+        name (str): The name of the metric
+
+    Returns:
+        None
+    """
     custom_style = Style(
     background = 'transparent',
     plot_background = 'transparent',
