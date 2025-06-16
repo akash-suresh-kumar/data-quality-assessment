@@ -9,16 +9,16 @@ def validate_data_with_schema(dataF, schema):
     Validates JSON data against a given schema and tracks various error types.
     
     Args:
-        dataF: Path to JSON file containing data
-        schema: JSON schema to validate against
+        dataF: Path to JSON file containing data.
+        schema: JSON schema to validate against.
         
     Returns:
         Tuple containing:
-        - num_samples: Total number of samples processed
-        - err_count: Number of samples with validation errors
-        - err_data_arr: Array of data packets with errors
-        - additional_prop_err_count: Count of additional properties errors
-        - req_prop_err_count: Count of required properties errors
+        - num_samples: Total number of samples processed.
+        - err_count: Number of samples with validation errors.
+        - err_data_arr: Array of data packets with errors.
+        - additional_prop_err_count: Count of additional properties errors.
+        - req_prop_err_count: Count of required properties errors.
     """
     num_samples = 0
     err_count = 0

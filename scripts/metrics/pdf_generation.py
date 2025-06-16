@@ -18,7 +18,7 @@ def create_title_card(pdf, datasetName, URL, numPackets, startTime, endTime):
         endTime: End time of the data collection.
 
     Returns:
-        None. Modifies the PDF object in place.
+        None, Modifies the PDF object in place.
     """
     pdf.image("../plots/pretty/iudx.png", 10, 5, 35)
     pdf.set_font("times", "b", 22)

@@ -7,7 +7,7 @@ def computeModeDeviation(dataframe):
     Computes mode deviation for a given dataframe series.
    
     Args:
-        dataframe: Series or array of values
+        dataframe: Series or array of values.
        
     Returns:
         Mode deviation value

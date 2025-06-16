@@ -362,6 +362,16 @@ def piePlot(df, df1, name):
     return
     
 def gaugePlot(metricScore, name):
+    """
+    Creates a gauge plot to visualize a single metric score.
+
+    Args:
+        metricScore (float): The metric score to visualize
+        name (str): The name of the metric
+
+    Returns:
+        None
+    """
     custom_style = Style(background = 'transparent', 
                      plot_background = 'transparent',
                      colors = ('#17C37B','#C32517'), 
@@ -369,12 +379,27 @@ def gaugePlot(metricScore, name):
     gauge = pygal.SolidGauge(half_pie=True, 
                              inner_radius=0.50,
                              style=custom_style,
-                             show_legend = False)
+                   aa          show_legend = False)
     gauge.add(name, [{'value': metricScore, 'max_value': 1}])
     gauge.render_to_png('../plots/donuts/' + name + 'PiePlot.png')
     return
 
 def outagePlot(df, meanStat, stdStat):
+    """
+    Calculates and plots the outage time per device based on the IAT values.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing IAT values and device IDs.
+        meanStat (float): Mean statistic of the IAT values.
+        stdStat (float): Standard deviation statistic of the IAT values.
+
+    Returns:
+        float: Average outage time across all devices.
+
+    Plots:
+        A bar chart representing the total outage time per device, saved as 'sensorOutagePlot.png'.
+    """
+
     upperBound = 2*meanStat
     sensorOutage = df.loc[df['IAT'] > upperBound]
     sensorOutage.reset_index(inplace = True)
@@ -397,6 +422,19 @@ def outagePlot(df, meanStat, stdStat):
     return outageAverage
 
 def outliersPlot(dataframe):
+    """
+    Plots a scatter plot of the IAT values with outliers highlighted.
+
+    Uses modified Z-score method to detect outliers, and plots the data with
+    outliers marked as 'x's. The threshold for outliers is also plotted as a
+    green dashed line.
+
+    Args:
+        dataframe (pd.DataFrame): DataFrame containing IAT values
+
+    Plots:
+        Scatter plot of IAT values with outliers highlighted, saved as 'outliersPlot.png'.
+    """
     df = dataframe
     data = df['IAT'].dropna()
 

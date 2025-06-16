@@ -11,7 +11,7 @@ def preProcess(df, input1, input2):
         input2: Column name for datetime
         
     Returns:
-        Processed DataFrame with IAT column
+        Processed DataFrame with IAT column.
     """
     # Make a copy to avoid SettingWithCopyWarning
     df_processed = df.copy()

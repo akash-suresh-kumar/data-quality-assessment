@@ -9,7 +9,7 @@ def duplicatesMetric(df, input1, input2):
         input2: Second column name to check for duplicates
         
     Returns:
-        Duplicates metric score (0-1, where 1 means no duplicates)
+        Duplicates metric score (0-1, where 1 means no duplicates).
     """
     totalDataPackets = len(df)
     
