@@ -17,6 +17,7 @@ custom_style = Style(background = 'transparent',
 
 #reading the config file
 def readFile(configFile):
+<<<<<<< HEAD
     """
     Reads configuration file and data file.
 
@@ -39,6 +40,8 @@ def readFile(configFile):
 
     """
 
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     with open(configFile, "r") as file:
         configDict = json.load(file)
     
@@ -72,6 +75,7 @@ def readFile(configFile):
 
 # finding the time range of the dataset
 def timeRange(dataframe):
+<<<<<<< HEAD
     """
     Finds the time range of the dataset.
 
@@ -86,6 +90,8 @@ def timeRange(dataframe):
         startYear (int): Start year (e.g. 2020)
         endYear (int): End year (e.g. 2021)
     """
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     startTime = min(dataframe['observationDateTime'])
     startTime = pd.to_datetime(startTime)
     startTime = startTime.tz_localize(None)
@@ -100,6 +106,7 @@ def timeRange(dataframe):
 
 #dropping duplicates
 def dropDupes(dataframe, input1, input2):
+<<<<<<< HEAD
     """
     Drops duplicate rows from a DataFrame based on two columns.
 
@@ -117,6 +124,8 @@ def dropDupes(dataframe, input1, input2):
         dfDrop (pd.DataFrame): DataFrame with duplicates removed
         dupeCount (int): Number of duplicate rows that were removed
     """
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     dfLen1 = len(dataframe)
     dfDrop = dataframe.drop_duplicates(subset = [input1, input2], inplace = False, ignore_index = True)
     dfLen2 = len(dfDrop)
@@ -128,6 +137,7 @@ def dropDupes(dataframe, input1, input2):
 
 #IQR Outliers are identified and removed
 def outRemove(df, dataFile, input1):
+<<<<<<< HEAD
     """
     Identifies and removes outliers from a DataFrame based on IQR threshold.
 
@@ -141,6 +151,8 @@ def outRemove(df, dataFile, input1):
         lower (float): Lower bound of the IQR range
         upper (float): Upper bound of the IQR range
     """
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     dfInliers = df.copy(deep = True)
     dataName = dataFile
     
@@ -160,6 +172,7 @@ def outRemove(df, dataFile, input1):
 
     
 def dataStats(df):
+<<<<<<< HEAD
     """
     Compute summary statistics for IAT column in DataFrame.
 
@@ -170,6 +183,8 @@ def dataStats(df):
         tuple of 7 integers: mean, median, mode, standard deviation, variance, skewness, kurtosis
     """
     
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     skewStat = int(df['IAT'].skew())
     varianceStat = int(df['IAT'].var())
     meanStat = int(df['IAT'].mean())
@@ -183,6 +198,7 @@ def dataStats(df):
 #Data visualizations
 def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeScore, addnlScore):
 
+<<<<<<< HEAD
     """
     Creates a radar chart to visualize the metric scores.
 
@@ -198,6 +214,8 @@ def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeS
         None
     """
 
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     custom_style = Style(
       background='transparent',
       plot_background='transparent',
@@ -219,6 +237,7 @@ def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeS
 
 
 def bars(score, name):
+<<<<<<< HEAD
     """
     Creates a horizontal stacked bar chart to visualize a single metric score.
 
@@ -229,6 +248,8 @@ def bars(score, name):
     Returns:
         None
     """
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     custom_style = Style(
     background = 'transparent',
     plot_background = 'transparent',
@@ -362,6 +383,7 @@ def piePlot(df, df1, name):
     return
     
 def gaugePlot(metricScore, name):
+<<<<<<< HEAD
     """
     Creates a gauge plot to visualize a single metric score.
 
@@ -372,6 +394,8 @@ def gaugePlot(metricScore, name):
     Returns:
         None
     """
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     custom_style = Style(background = 'transparent', 
                      plot_background = 'transparent',
                      colors = ('#17C37B','#C32517'), 
@@ -379,12 +403,17 @@ def gaugePlot(metricScore, name):
     gauge = pygal.SolidGauge(half_pie=True, 
                              inner_radius=0.50,
                              style=custom_style,
+<<<<<<< HEAD
                    aa          show_legend = False)
+=======
+                             show_legend = False)
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     gauge.add(name, [{'value': metricScore, 'max_value': 1}])
     gauge.render_to_png('../plots/donuts/' + name + 'PiePlot.png')
     return
 
 def outagePlot(df, meanStat, stdStat):
+<<<<<<< HEAD
     """
     Calculates and plots the outage time per device based on the IAT values.
 
@@ -400,6 +429,8 @@ def outagePlot(df, meanStat, stdStat):
         A bar chart representing the total outage time per device, saved as 'sensorOutagePlot.png'.
     """
 
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     upperBound = 2*meanStat
     sensorOutage = df.loc[df['IAT'] > upperBound]
     sensorOutage.reset_index(inplace = True)
@@ -422,6 +453,7 @@ def outagePlot(df, meanStat, stdStat):
     return outageAverage
 
 def outliersPlot(dataframe):
+<<<<<<< HEAD
     """
     Plots a scatter plot of the IAT values with outliers highlighted.
 
@@ -435,6 +467,8 @@ def outliersPlot(dataframe):
     Plots:
         Scatter plot of IAT values with outliers highlighted, saved as 'outliersPlot.png'.
     """
+=======
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     df = dataframe
     data = df['IAT'].dropna()
 

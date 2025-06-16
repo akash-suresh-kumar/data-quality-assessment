@@ -12,8 +12,13 @@ def validate_requiredFields(dataF, setReqd):
         
     Returns:
         Tuple containing:
+<<<<<<< HEAD
         - num_samples: Total number of samples processed.
         - num_missing_prop: Total number of missing properties across all samples.
+=======
+        - num_samples: Total number of samples processed
+        - num_missing_prop: Total number of missing properties across all samples
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     """
     num_samples = 0
     num_missing_prop = 0

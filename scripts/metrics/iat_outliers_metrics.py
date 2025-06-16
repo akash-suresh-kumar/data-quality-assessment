@@ -10,7 +10,7 @@ def iatOutliersMetric(dataframe):
         dataframe: DataFrame with 'IAT' column
        
     Returns:
-        IAT outliers metric score (0-1, where 1 means no outliers).
+        IAT outliers metric score (0-1, where 1 means no outliers)
     """
     df = dataframe
     data = df['IAT'].dropna()

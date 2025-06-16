@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set "VIRTUAL_ENV=C:\Users\AKASH\Downloads\data-quality-assessment\scripts\iudx"
+=======
+set "VIRTUAL_ENV=C:\Users\AKASH\Downloads\data-quality-assessment-main\data-quality-assessment-main\scripts\iudx"
+>>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
 
 if not defined PROMPT set PROMPT=$P$G
 
