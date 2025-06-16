@@ -33,10 +33,8 @@ def main():
     configDict, dfRaw, input1, input2, datasetName, fileName, URL, alpha, schema = (
         pp.readFile(configFile)
     )
-
     print(fileName)
     print(datasetName)
-
     startTime, endTime, startMonth, endMonth, startYear, endYear = pp.timeRange(dfRaw)
     numPackets = dfRaw.shape[0]
 
