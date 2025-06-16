@@ -17,7 +17,6 @@ custom_style = Style(background = 'transparent',
 
 #reading the config file
 def readFile(configFile):
-<<<<<<< HEAD
     """
     Reads configuration file and data file.
 
@@ -40,8 +39,6 @@ def readFile(configFile):
 
     """
 
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     with open(configFile, "r") as file:
         configDict = json.load(file)
     
@@ -75,7 +72,6 @@ def readFile(configFile):
 
 # finding the time range of the dataset
 def timeRange(dataframe):
-<<<<<<< HEAD
     """
     Finds the time range of the dataset.
 
@@ -90,8 +86,6 @@ def timeRange(dataframe):
         startYear (int): Start year (e.g. 2020)
         endYear (int): End year (e.g. 2021)
     """
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     startTime = min(dataframe['observationDateTime'])
     startTime = pd.to_datetime(startTime)
     startTime = startTime.tz_localize(None)
@@ -106,7 +100,6 @@ def timeRange(dataframe):
 
 #dropping duplicates
 def dropDupes(dataframe, input1, input2):
-<<<<<<< HEAD
     """
     Drops duplicate rows from a DataFrame based on two columns.
 
@@ -124,8 +117,6 @@ def dropDupes(dataframe, input1, input2):
         dfDrop (pd.DataFrame): DataFrame with duplicates removed
         dupeCount (int): Number of duplicate rows that were removed
     """
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     dfLen1 = len(dataframe)
     dfDrop = dataframe.drop_duplicates(subset = [input1, input2], inplace = False, ignore_index = True)
     dfLen2 = len(dfDrop)
@@ -137,7 +128,6 @@ def dropDupes(dataframe, input1, input2):
 
 #IQR Outliers are identified and removed
 def outRemove(df, dataFile, input1):
-<<<<<<< HEAD
     """
     Identifies and removes outliers from a DataFrame based on IQR threshold.
 
@@ -151,8 +141,6 @@ def outRemove(df, dataFile, input1):
         lower (float): Lower bound of the IQR range
         upper (float): Upper bound of the IQR range
     """
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     dfInliers = df.copy(deep = True)
     dataName = dataFile
     
@@ -172,7 +160,6 @@ def outRemove(df, dataFile, input1):
 
     
 def dataStats(df):
-<<<<<<< HEAD
     """
     Compute summary statistics for IAT column in DataFrame.
 
@@ -183,8 +170,6 @@ def dataStats(df):
         tuple of 7 integers: mean, median, mode, standard deviation, variance, skewness, kurtosis
     """
     
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     skewStat = int(df['IAT'].skew())
     varianceStat = int(df['IAT'].var())
     meanStat = int(df['IAT'].mean())
@@ -198,7 +183,6 @@ def dataStats(df):
 #Data visualizations
 def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeScore, addnlScore):
 
-<<<<<<< HEAD
     """
     Creates a radar chart to visualize the metric scores.
 
@@ -214,8 +198,6 @@ def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeS
         None
     """
 
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     custom_style = Style(
       background='transparent',
       plot_background='transparent',
@@ -237,7 +219,6 @@ def radarChart(regularityScore, outliersScore, dupeScore, formatScore, completeS
 
 
 def bars(score, name):
-<<<<<<< HEAD
     """
     Creates a horizontal stacked bar chart to visualize a single metric score.
 
@@ -248,8 +229,6 @@ def bars(score, name):
     Returns:
         None
     """
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     custom_style = Style(
     background = 'transparent',
     plot_background = 'transparent',
@@ -274,6 +253,18 @@ def bars(score, name):
 
 #plotting duplicates against preremoval on a per sensor basis
 def plotDupesID(df, df1, input1):
+    """
+    Creates a bar chart to visualize the effect of deduplication on data packets per sensor.
+
+    Args:
+        df (pd.DataFrame): Original DataFrame before deduplication.
+        df1 (pd.DataFrame): DataFrame after deduplication.
+        input1 (str): Column name representing sensor IDs.
+
+    Returns:
+        None
+    """
+
     sensorDupe = df.groupby(input1).size()
     sensorDupe = sensorDupe.to_frame().reset_index()
     sensorClean = df1.groupby(input1).size()
@@ -298,6 +289,18 @@ def plotDupesID(df, df1, input1):
     return 
 
 def plotDupes(dataframe, input1, input2):
+    """
+    Creates a horizontal bar chart to visualize the effect of deduplication on the total number of data packets in the dataset.
+
+    Args:
+        dataframe (pd.DataFrame): DataFrame before deduplication.
+        input1 (str): Column name representing sensor IDs.
+        input2 (str): Column name representing sensor IDs.
+
+    Returns:
+        None
+    """
+    
     preDedupe = len(dataframe)
     dfDrop = dataframe.drop_duplicates(subset = [input1, input2], inplace = False, ignore_index = True)
     postDedupe = len(dfDrop)
@@ -315,6 +318,22 @@ def plotDupes(dataframe, input1, input2):
     return
 
 def IAThist(df):
+    """
+    Plots a histogram of the 'Inter Arrival Time' (IAT) column from a DataFrame.
+
+    This function generates and saves a histogram plot of the IAT values 
+    present in the provided DataFrame. The histogram is normalized and the 
+    x-axis is labeled with 'Inter Arrival Time [in seconds]'. The plot is 
+    saved in the '../plots/' directory with a filename based on the DataFrame's 
+    name, appended with 'IAThistPlot.png'.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the 'IAT' column for plotting.
+
+    Returns:
+        None
+    """
+
     bins = np.linspace(min(df['IAT'].dropna())-0.05*min(df['IAT'].dropna()), max(df['IAT'].dropna())+0.05*max(df['IAT'].dropna()), 10)
     df['IAT'].dropna().plot.hist(bins = bins, edgecolor = 'k', alpha = 0.5, density = True) 
     plt.xticks(rotation = 90)
@@ -325,11 +344,39 @@ def IAThist(df):
     return
 
 def outScatterPlot(df):
+    """
+    Plots a scatter plot of 'Inter Arrival Time' (IAT) values against truncated sensor IDs.
+
+    This function generates a scatter plot with 'idTrunc' on the x-axis and 'IAT' on the y-axis.
+    The plot is intended to visualize the distribution and potential outliers of IAT values 
+    across different sensors, identified by their truncated IDs.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing 'idTrunc' and 'IAT' columns for plotting.
+
+    Returns:
+        matplotlib.axes.Axes: Axes object containing the scatter plot.
+    """
+
     plot = df.plot.scatter(x = 'idTrunc', y = 'IAT', rot = 90)
     return plot
     
     
 def boxPlot(df, fileName, input1):
+    """
+    Generates a boxplot of Inter-Arrival Times (IATs) grouped by truncated sensor IDs.
+
+    The boxplot is saved in the '../plots/' directory with a filename based on the DataFrame's name, appended with 'BoxPlot.png'.
+    If the dataset is from the Air Quality Monitoring (AQM) project, the sensor IDs are truncated to the last 4 characters for better visibility in the plot.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the IAT column and sensor IDs.
+        fileName (str): Name of the dataset (used to determine if it's from the AQM project).
+        input1 (str): Column name representing the sensor IDs.
+
+    Returns:
+        None
+    """
     dataName = fileName
 #checking to see if dataset is AQM for plot labels (sensor id)
     if "AQM" in dataName:
@@ -345,6 +392,18 @@ def boxPlot(df, fileName, input1):
     return
 
 def normalFitPlot(df):
+    """
+    Generates a normal distribution fit plot of Inter-Arrival Times (IATs) along with a histogram.
+
+    The plot is not saved, but the mean and standard deviation of the fitted normal distribution are returned.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the IAT column.
+
+    Returns:
+        tuple of 2 floats: Mean and standard deviation of the fitted normal distribution.
+    """
+    
     data = df['IAT'].dropna()
     mu, std = norm.fit(data) 
     bins = np.linspace(min(data)-0.05*min(data), max(data)+0.05*max(data), 20)
@@ -365,6 +424,19 @@ def normalFitPlot(df):
     return mu, std
 
 def piePlot(df, df1, name):
+    """
+    Generates a pie chart plot to visualize the number of duplicate packets in a given dataset.
+
+    The plot is saved as a PNG image in the '../plots/' directory with a filename based on the dataset name.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing all data packets.
+        df1 (pd.DataFrame): DataFrame containing data packets after removing duplicates.
+        name (str): The name of the dataset.
+
+    Returns:
+        None
+    """
     custom_style = Style(background = 'transparent', 
                      plot_background = 'transparent',
                      colors = ('#17C37B','#D9DFEB'), 
@@ -383,7 +455,6 @@ def piePlot(df, df1, name):
     return
     
 def gaugePlot(metricScore, name):
-<<<<<<< HEAD
     """
     Creates a gauge plot to visualize a single metric score.
 
@@ -394,8 +465,6 @@ def gaugePlot(metricScore, name):
     Returns:
         None
     """
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     custom_style = Style(background = 'transparent', 
                      plot_background = 'transparent',
                      colors = ('#17C37B','#C32517'), 
@@ -403,17 +472,12 @@ def gaugePlot(metricScore, name):
     gauge = pygal.SolidGauge(half_pie=True, 
                              inner_radius=0.50,
                              style=custom_style,
-<<<<<<< HEAD
-                   aa          show_legend = False)
-=======
                              show_legend = False)
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     gauge.add(name, [{'value': metricScore, 'max_value': 1}])
     gauge.render_to_png('../plots/donuts/' + name + 'PiePlot.png')
     return
 
 def outagePlot(df, meanStat, stdStat):
-<<<<<<< HEAD
     """
     Calculates and plots the outage time per device based on the IAT values.
 
@@ -429,8 +493,6 @@ def outagePlot(df, meanStat, stdStat):
         A bar chart representing the total outage time per device, saved as 'sensorOutagePlot.png'.
     """
 
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     upperBound = 2*meanStat
     sensorOutage = df.loc[df['IAT'] > upperBound]
     sensorOutage.reset_index(inplace = True)
@@ -453,7 +515,6 @@ def outagePlot(df, meanStat, stdStat):
     return outageAverage
 
 def outliersPlot(dataframe):
-<<<<<<< HEAD
     """
     Plots a scatter plot of the IAT values with outliers highlighted.
 
@@ -467,8 +528,6 @@ def outliersPlot(dataframe):
     Plots:
         Scatter plot of IAT values with outliers highlighted, saved as 'outliersPlot.png'.
     """
-=======
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
     df = dataframe
     data = df['IAT'].dropna()
 
