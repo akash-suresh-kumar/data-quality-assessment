@@ -17,6 +17,28 @@ custom_style = Style(background = 'transparent',
 
 #reading the config file
 def readFile(configFile):
+    """
+    Reads configuration file and data file.
+
+    Reads configuration file and extracts configuration parameters.
+    Reads data file and loads data into a pandas DataFrame.
+
+    Parameters:
+        configFile (str): Path to configuration file
+
+    Returns:
+        configDict (dict): Configuration parameters
+        dfRaw (pd.DataFrame): Raw data
+        input1 (str): First attribute for deduplication
+        input2 (str): Second attribute for deduplication
+        datasetName (str): Name of the dataset
+        fileName (str): Name of the data file
+        URL (str): URL link to the dataset
+        alpha (list): List of alpha values for IAT regularity metric
+        schema (dict or None): Schema for data validation (if schema validation is enabled)
+
+    """
+
     with open(configFile, "r") as file:
         configDict = json.load(file)
     
@@ -50,6 +72,20 @@ def readFile(configFile):
 
 # finding the time range of the dataset
 def timeRange(dataframe):
+    """
+    Finds the time range of the dataset.
+
+    Args:
+        dataframe (pd.DataFrame): DataFrame with 'observationDateTime' column
+
+    Returns:
+        startTime (pd.Timestamp): Start time of the dataset
+        endTime (pd.Timestamp): End time of the dataset
+        startMonth (str): Start month (e.g. Jan)
+        endMonth (str): End month (e.g. Dec)
+        startYear (int): Start year (e.g. 2020)
+        endYear (int): End year (e.g. 2021)
+    """
     startTime = min(dataframe['observationDateTime'])
     startTime = pd.to_datetime(startTime)
     startTime = startTime.tz_localize(None)
@@ -64,6 +100,23 @@ def timeRange(dataframe):
 
 #dropping duplicates
 def dropDupes(dataframe, input1, input2):
+    """
+    Drops duplicate rows from a DataFrame based on two columns.
+
+    This function takes a DataFrame and two column names as input. It then
+    identifies and removes duplicate rows from the DataFrame based on the two
+    columns. The function returns the updated DataFrame and the number of
+    duplicate rows that were removed.
+
+    Parameters:
+        dataframe (pd.DataFrame): DataFrame to drop duplicates from
+        input1 (str): First column name to check for duplicates
+        input2 (str): Second column name to check for duplicates
+
+    Returns:
+        dfDrop (pd.DataFrame): DataFrame with duplicates removed
+        dupeCount (int): Number of duplicate rows that were removed
+    """
     dfLen1 = len(dataframe)
     dfDrop = dataframe.drop_duplicates(subset = [input1, input2], inplace = False, ignore_index = True)
     dfLen2 = len(dfDrop)
