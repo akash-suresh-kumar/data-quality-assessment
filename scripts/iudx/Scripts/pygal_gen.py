@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #!C:\Users\AKASH\Downloads\data-quality-assessment\scripts\iudx\Scripts\python.exe
-=======
-#!C:\Users\AKASH\Downloads\data-quality-assessment-main\data-quality-assessment-main\scripts\iudx\Scripts\python.exe
->>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
 # -*- coding: utf-8 -*-
 # This file is part of pygal
 #
