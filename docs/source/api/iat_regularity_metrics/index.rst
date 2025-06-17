@@ -18,11 +18,18 @@ Module Contents
 
 .. py:function:: computeModeDeviation(dataframe)
 
-   Computes mode deviation for a given dataframe series.
+       Computes mode deviation for a given dataframe series.
 
-   :param dataframe: Series or array of values
+       Args:
+   <<<<<<< HEAD
+           dataframe: Series or array of values.
+   =======
+           dataframe: Series or array of values
+   >>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
 
-   :returns: Mode deviation value
+       Returns:
+           Mode deviation value
+
 
 
 .. py:function:: iatRegularityMetric(dataframe)

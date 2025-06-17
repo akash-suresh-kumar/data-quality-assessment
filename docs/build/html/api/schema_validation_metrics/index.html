@@ -185,6 +185,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../data_preprocessing/index.html#functions">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data_preprocessing/index.html#module-contents">Module Contents</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../data_preprocessing/index.html#data_preprocessing.preProcess"><code class="docutils literal notranslate"><span class="pre">preProcess()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../data_preprocessing/index.html#id0"><code class="docutils literal notranslate"><span class="pre">preProcess()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -530,6 +531,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../data_preprocessing/index.html#functions">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data_preprocessing/index.html#module-contents">Module Contents</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../data_preprocessing/index.html#data_preprocessing.preProcess"><code class="docutils literal notranslate"><span class="pre">preProcess()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../data_preprocessing/index.html#id0"><code class="docutils literal notranslate"><span class="pre">preProcess()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -778,28 +780,38 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="schema_validation_metrics.validate_data_with_schema">
 <span class="sig-prename descclassname"><span class="pre">schema_validation_metrics.</span></span><span class="sig-name descname"><span class="pre">validate_data_with_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#schema_validation_metrics.validate_data_with_schema" title="Link to this definition"></a></dt>
-<dd><p>Validates JSON data against a given schema and tracks various error types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataF</strong> – Path to JSON file containing data</p></li>
-<li><p><strong>schema</strong> – JSON schema to validate against</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>num_samples: Total number of samples processed</p></li>
-<li><p>err_count: Number of samples with validation errors</p></li>
-<li><p>err_data_arr: Array of data packets with errors</p></li>
-<li><p>additional_prop_err_count: Count of additional properties errors</p></li>
-<li><p>req_prop_err_count: Count of required properties errors</p></li>
-</ul>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tuple containing</p>
+<dd><blockquote>
+<div><p>Validates JSON data against a given schema and tracks various error types.</p>
+<p>Args:</p>
+</div></blockquote>
+<dl>
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</dt><dd><blockquote>
+<div><p>dataF: Path to JSON file containing data.
+schema: JSON schema to validate against.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Tuple containing:
+- num_samples: Total number of samples processed.
+- err_count: Number of samples with validation errors.
+- err_data_arr: Array of data packets with errors.
+- additional_prop_err_count: Count of additional properties errors.
+- req_prop_err_count: Count of required properties errors.</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<blockquote>
+<div><dl class="simple">
+<dt>Returns:</dt><dd><p>Tuple containing:
+- num_samples: Total number of samples processed
+- err_count: Number of samples with validation errors
+- err_data_arr: Array of data packets with errors
+- additional_prop_err_count: Count of additional properties errors
+- req_prop_err_count: Count of required properties errors</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9c5f2989031ba54019bec835b7ecb3f5768f2dcf</p>
 </dd></dl>
 
 </section>

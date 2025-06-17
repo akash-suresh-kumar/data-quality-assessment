@@ -17,18 +17,32 @@ Module Contents
 
 .. py:function:: validate_data_with_schema(dataF, schema)
 
-   Validates JSON data against a given schema and tracks various error types.
+       Validates JSON data against a given schema and tracks various error types.
 
-   :param dataF: Path to JSON file containing data
-   :param schema: JSON schema to validate against
+       Args:
+   <<<<<<< HEAD
+           dataF: Path to JSON file containing data.
+           schema: JSON schema to validate against.
 
-   :returns:
+       Returns:
+           Tuple containing:
+           - num_samples: Total number of samples processed.
+           - err_count: Number of samples with validation errors.
+           - err_data_arr: Array of data packets with errors.
+           - additional_prop_err_count: Count of additional properties errors.
+           - req_prop_err_count: Count of required properties errors.
+   =======
+           dataF: Path to JSON file containing data
+           schema: JSON schema to validate against
 
-             - num_samples: Total number of samples processed
-             - err_count: Number of samples with validation errors
-             - err_data_arr: Array of data packets with errors
-             - additional_prop_err_count: Count of additional properties errors
-             - req_prop_err_count: Count of required properties errors
-   :rtype: Tuple containing
+       Returns:
+           Tuple containing:
+           - num_samples: Total number of samples processed
+           - err_count: Number of samples with validation errors
+           - err_data_arr: Array of data packets with errors
+           - additional_prop_err_count: Count of additional properties errors
+           - req_prop_err_count: Count of required properties errors
+   >>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
+
 
 

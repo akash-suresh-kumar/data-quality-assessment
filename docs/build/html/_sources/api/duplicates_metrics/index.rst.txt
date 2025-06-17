@@ -24,6 +24,6 @@ Module Contents
    :param input1: First column name to check for duplicates
    :param input2: Second column name to check for duplicates
 
-   :returns: Duplicates metric score (0-1, where 1 means no duplicates)
+   :returns: Duplicates metric score (0-1, where 1 means no duplicates).
 
 

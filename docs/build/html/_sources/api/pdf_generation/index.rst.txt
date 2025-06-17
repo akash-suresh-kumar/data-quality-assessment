@@ -44,16 +44,23 @@ Module Contents
 
 .. py:function:: create_title_card(pdf, datasetName, URL, numPackets, startTime, endTime)
 
-   Creates the title card for the PDF report.
+       Creates the title card for the PDF report.
 
-   :param pdf: FPDF object to add content to.
-   :param datasetName: Name of the dataset.
-   :param URL: URL link to the dataset.
-   :param numPackets: Number of data packets in the dataset.
-   :param startTime: Start time of the data collection.
-   :param endTime: End time of the data collection.
+       Args:
+           pdf: FPDF object to add content to.
+           datasetName: Name of the dataset.
+           URL: URL link to the dataset.
+           numPackets: Number of data packets in the dataset.
+           startTime: Start time of the data collection.
+           endTime: End time of the data collection.
 
-   :returns: None. Modifies the PDF object in place.
+       Returns:
+   <<<<<<< HEAD
+           None, Modifies the PDF object in place.
+   =======
+           None. Modifies the PDF object in place.
+   >>>>>>> 9c5f2989031ba54019bec835b7ecb3f5768f2dcf
+
 
 
 .. py:function:: create_heading(title, pdf)
